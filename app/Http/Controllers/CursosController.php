@@ -21,15 +21,18 @@
 			}
 			return view('detalhes')->with('c', $resposta[0]);
 		}		
-		public function pesquisa(){
-			$title = Request::input('title', '0');
+		public function busca(){
 			
-			$resposta = DB::select('select * from curso where title LIKE = ?', '%',[$title],'%');
+			$title = Request::input('tittle', '0');
+			
+			$resposta = DB::select('select * from curso where title LIKE ?', '%',[$title],'%');
 			
 			if(empty($resposta)){
 				return "Curso não cadastrado";
 			}
-			return view('detalhes')->with('c', $resposta[0]);
-		}		
+			$data['cursos'] = $resposta;
+			return view('listagem', $data);	
+			
+		}
 	}
 ?>

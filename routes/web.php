@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('/', 'CursosController@lista');
 
 Route::get('/detalha', 'CursosController@detalha');
+
+Route::get('/busca', 'CursosController@busca');
